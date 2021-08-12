@@ -61,7 +61,6 @@ body {
   border-radius: 1em;
   box-shadow: 0 0 10px rgba(192, 192, 192, 0.658);
   display: none;
-  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -72,12 +71,10 @@ body {
   align-items: center;
   width: 70%;
   margin: 2em 0;
-  border: 2px solid blue;
 }
 .settingItem p {
   min-width: 7em;
   text-align: left;
-  border: 2px solid red;
 }
 #input-duration,
 #input-scale {
@@ -87,6 +84,7 @@ body {
 }
 h2 {
   margin-left: 1.5em;
+  width: 80%;
 }
 
 .toggle {

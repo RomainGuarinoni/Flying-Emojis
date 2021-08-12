@@ -39,7 +39,7 @@ const options = [
 settingsButton.addEventListener("click", () => {
   settingsOpen = !settingsOpen;
   if (settingsOpen) {
-    settingsWindow.style.display = "block";
+    settingsWindow.style.display = "flex";
   } else {
     settingsWindow.style.display = "none";
   }
