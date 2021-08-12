@@ -24,7 +24,7 @@ const options = [
   {
     button: scaleButton,
     function: (e) => {
-      console.log("coucou");
+      scale = e.target.value;
     },
   },
   {
@@ -121,10 +121,14 @@ function createRandomAnimation() {
         }
         100% {
           transform: translate(${
-            translateX ? Math.random() * document.body.clientWidth : 0
+            translateX
+              ? Math.random() > 0.5
+                ? Math.random() * document.body.clientWidth
+                : -Math.random() * document.body.clientWidth
+              : 0
           }px,-${document.body.clientHeight + 50}px) rotate(${
       rotate ? "180deg" : 0
-    }) scale(1) ;
+    }) scale(${scale}) ;
           display:none;
         }
       }`,
