@@ -1,9 +1,41 @@
 let settingsOpen = false;
+
+//variable for settings options
+let translateX = false;
+let rotate = false;
+let scale = 1;
+let duration = 1000;
+
 const settingsButton = document.getElementById("settingWheel");
 const settingsWindow = document.getElementById("settingsContainer");
-const translateY = document.getElementById("input-translateY");
+const translateXButton = document.getElementById("input-translateX");
+const rotateButton = document.getElementById("input-rotate");
+const scaleButton = document.getElementById("input-scale");
+const durationButton = document.getElementById("input-duration");
+const options = [
+  {
+    button: translateXButton,
+    function: () => (translateX = !translateX),
+  },
+  {
+    button: rotateButton,
+    function: () => (rotate = !rotate),
+  },
+  {
+    button: scaleButton,
+    function: (e) => {
+      console.log("coucou");
+    },
+  },
+  {
+    button: durationButton,
+    function: (e) => {
+      duration = e.target.value;
+    },
+  },
+];
 
-//open the settings panel
+//open settings pannel
 settingsButton.addEventListener("click", () => {
   settingsOpen = !settingsOpen;
   if (settingsOpen) {
@@ -24,6 +56,10 @@ window.addEventListener("click", (e) => {
   }
 });
 
+//Add event listener for options
+for (let i = 0; i < options.length; i++) {
+  options[i].button.addEventListener("change", options[i].function);
+}
 const emojis = document.getElementsByClassName("emoji");
 
 for (let index = 0; index < emojis.length; index++) {
@@ -33,14 +69,12 @@ for (let index = 0; index < emojis.length; index++) {
 }
 
 /**
- *@description function triggered on each click of an emojy 
-                and that create a flying emojy on the window
+ * @description function triggered on each click of an emojy and that create a flying emojy on the window
  * @param {HTMLElement} icon
  * @return {void} add a flying emojy to the HTML body
  */
 function createFlyingEmoji(icon) {
   const positionX = Math.random() * window.innerWidth;
-  const timing = 1000;
   const bezier = `cubic-bezier(${Math.random()},${Math.random()},${Math.random()},${Math.random()})`;
   //HTML property
   const flyingEmoji = document.createElement("div");
@@ -50,14 +84,14 @@ function createFlyingEmoji(icon) {
   flyingEmoji.style.position = "absolute";
   flyingEmoji.style.left = `${positionX}px`;
   flyingEmoji.style.bottom = `-5px`;
-  const keyFramesName = createRandomAnimation(timing);
-  flyingEmoji.style.animation = `${keyFramesName} ${timing}ms ${bezier}`;
+  const keyFramesName = createRandomAnimation(duration);
+  flyingEmoji.style.animation = `${keyFramesName} ${duration}ms ${bezier}`;
   document.body.appendChild(flyingEmoji);
 
   //remove the node when animation is done
   setTimeout(() => {
     document.body.removeChild(flyingEmoji);
-  }, timing);
+  }, duration);
 }
 
 /**
@@ -83,10 +117,14 @@ function createRandomAnimation() {
     `
     @keyframes ${keyFramesName} {
         0% {
-          transform: translateY(0px);
+          transform: translate(0px,0px) scale(1) rotate(0deg)  ;
         }
         100% {
-          transform: translateY(-${document.body.clientHeight + 50}px);
+          transform: translate(${
+            translateX ? Math.random() * document.body.clientWidth : 0
+          }px,-${document.body.clientHeight + 50}px) rotate(${
+      rotate ? "180deg" : 0
+    }) scale(1) ;
           display:none;
         }
       }`,

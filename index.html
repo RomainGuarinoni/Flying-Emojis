@@ -11,6 +11,7 @@
     <title>Flying Emojis 😃</title>
 </head>
 <body>
+    <p id="test"></p>
     <div class="emojiContainer">
         <div class="emoji">❤️</div>
         <div class="emoji">😍</div>
@@ -24,13 +25,6 @@
         <div id="settingsContainer">
             <h2>Settings</h2>
             <div class="settingItem">
-                <p>TranslateY</p>
-                <label for="input-translateY" class="toggle">
-                    <input type="checkbox" class="toggle-input" id="input-translateY">
-                    <span class="slider"></span>
-                </label>
-            </div>
-            <div class="settingItem">
                 <p>TranslateX</p>
                 <label for="input-translateX" class="toggle">
                     <input type="checkbox" class="toggle-input" id="input-translateX">
@@ -38,11 +32,19 @@
                 </label>
             </div>
             <div class="settingItem">
-                <p>TranslateZ</p>
-                <label for="input-translateZ" class="toggle">
-                    <input type="checkbox" class="toggle-input" id="input-translateZ">
+                <p>Rotate</p>
+                <label for="input-rotate" class="toggle">
+                    <input type="checkbox" class="toggle-input" id="input-rotate">
                     <span class="slider"></span>
                 </label>
+            </div>
+            <div class="settingItem">
+                <p>Scale</p>
+                <input type="range" id="input-scale" min="1" max="100">
+            </div>
+            <div class="settingItem">
+                <p>Durations</p>
+                <input type="number" id="input-duration" value="1000">
             </div>
         </div>
     </div>
