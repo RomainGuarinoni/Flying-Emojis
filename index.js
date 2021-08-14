@@ -183,3 +183,17 @@ chaosButton.addEventListener("click", () => {
     clearInterval(interval);
   }
 });
+
+//create the entrance animation emojis
+setTimeout(() => {
+  document.getElementById("title").style.display = "none";
+}, 1500);
+let delay = 1.3 * 1000;
+for (let i = 0; i < emojis.length; i++) {
+  delay += 0.3 * 1000;
+  setTimeout(() => {
+    emojis[i].style.animation = `emojis 1s ease`;
+
+    emojis[i].style.opacity = "1 ";
+  }, delay);
+}
