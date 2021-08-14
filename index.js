@@ -8,6 +8,7 @@ let duration = 1000;
 
 const settingsButton = document.getElementById("settingWheel");
 const chaosButton = document.getElementById("chaos");
+const reloadButton = document.getElementById("reload");
 const settingsWindow = document.getElementById("settingsContainer");
 const translateXButton = document.getElementById("input-translateX");
 const rotateButton = document.getElementById("input-rotate");
@@ -154,7 +155,9 @@ function createRandomAnimation(translateXChaos, rotateChaos, scaleChaos) {
 }
 
 let interval = new Number();
-
+/**
+ * @description Create the chaos animation
+ */
 chaosButton.addEventListener("click", () => {
   chaos = !chaos;
   if (chaos) {

@@ -19,12 +19,14 @@ body {
 .emojiContainer {
   margin: auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  width: 50%;
 }
 .emoji {
   cursor: pointer;
-  margin: 1em;
+  margin: 1em 0;
   padding: 1em;
   transition: all ease 200ms;
   font-size: 1.5em;
@@ -60,14 +62,17 @@ header {
 #settings {
   position: relative;
 }
-#settingWheel {
+#settingWheel,
+#reload {
   cursor: pointer;
 }
 
-#settings img:hover {
+#settings img:hover,
+#reload:hover {
   transform: rotate(45deg);
 }
-#settings img {
+#settings img,
+#reload {
   width: 2em;
   height: auto;
   transition: all 200ms ease;
@@ -153,4 +158,35 @@ h2 {
 }
 .toggle input:checked + .slider {
   background: black;
+}
+
+title {
+  animation: title 1.5s ease-in-out;
+  position: absolute;
+  z-index: 2;
+  margin: auto;
+  width: 100%;
+  height: 100vh;
+  border: 2px solid red;
+  text-align: center;
+}
+
+@keyframes title {
+  0% {
+    opacity: 0;
+    transform: translateY(-2em);
+  }
+  45% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2em);
+    display: none;
+  }
 }
