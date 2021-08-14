@@ -153,34 +153,30 @@ function createRandomAnimation(translateXChaos, rotateChaos, scaleChaos) {
   return keyFramesName;
 }
 
+let interval = new Number();
+
 chaosButton.addEventListener("click", () => {
   chaos = !chaos;
-  // const interval;
   if (chaos) {
+    chaosButton.innerHTML = "Stop chaos";
     chaosButton.style.color = "#f44336";
-    createChaos();
+    const emojisIcon = [];
+    for (let i = 0; i < emojis.length; i++) {
+      emojisIcon.push(emojis[i].textContent);
+    }
+    interval = setInterval(() => {
+      const randomIndex = Math.floor(Math.random() * emojisIcon.length);
+      createFlyingEmoji(
+        emojisIcon[randomIndex],
+        true,
+        true,
+        Math.random() * 20,
+        Math.random() * 2000
+      );
+    }, 1);
   } else {
-    // interval.clearInterval()
-    chaosButton.style.color = "rgba(0, 0, 0, 0.425)";
+    chaosButton.innerHTML = "Create chaos";
+    chaosButton.style.color = "black";
+    clearInterval(interval);
   }
 });
-
-/**
- * @description All the emojis are flying in full chaos
- */
-function createChaos() {
-  const emojisIcon = [];
-  for (let i = 0; i < emojis.length; i++) {
-    emojisIcon.push(emojis[i].textContent);
-  }
-  setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * emojisIcon.length);
-    createFlyingEmoji(
-      emojisIcon[randomIndex],
-      true,
-      true,
-      Math.random() * 20,
-      Math.random() * 2000
-    );
-  }, 1);
-}

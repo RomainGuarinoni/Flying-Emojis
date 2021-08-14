@@ -47,7 +47,7 @@ header {
   margin-right: 1em;
   font-size: 1.2em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.425);
+  color: black;
   cursor: pointer;
   transition: all ease 200ms;
   padding: 1em;
@@ -55,7 +55,6 @@ header {
 #chaos:hover {
   /* color: #f44336; */
   transform: translateY(-0.5em);
-  color: black;
 }
 
 #settings {
